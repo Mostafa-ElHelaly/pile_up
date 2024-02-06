@@ -1,12 +1,14 @@
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:pile_up/models/button.dart';
 import 'package:pile_up/models/drawer.dart';
+import 'package:pile_up/screens/calendar.dart';
+
+import 'blog.dart';
+import 'merchents.dart';
 
 String? string; // Nullable String
-
 
 class home extends StatefulWidget {
   const home({super.key});
@@ -199,7 +201,7 @@ class _homeState extends State<home> {
                     const Padding(
                       padding: EdgeInsets.only(left: 13),
                       child: Text(
-                        'My Piles',
+                        'Our Merchant',
                         style: TextStyle(
                             color: Color.fromRGBO(48, 48, 49, 1),
                             fontSize: 16,
@@ -212,9 +214,19 @@ class _homeState extends State<home> {
                         text: 'View all',
                         textColor: const Color.fromRGBO(239, 108, 77, 1),
                         textUnderLine: TextDecoration.underline,
-                        textUnderLineColor: const Color.fromRGBO(239, 108, 77, 1),
+                        textUnderLineColor:
+                            const Color.fromRGBO(239, 108, 77, 1),
                         textSize: 16,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const merchants();
+                              },
+                            ),
+                          );
+                        },
                         backgroundColor: null,
                       ),
                     ),
@@ -240,7 +252,7 @@ class _homeState extends State<home> {
                     const Padding(
                       padding: EdgeInsets.only(left: 13),
                       child: Text(
-                        'My Piles',
+                        'Blog',
                         style: TextStyle(
                             color: Color.fromRGBO(48, 48, 49, 1),
                             fontSize: 16,
@@ -253,9 +265,19 @@ class _homeState extends State<home> {
                         text: 'View all',
                         textColor: const Color.fromRGBO(239, 108, 77, 1),
                         textUnderLine: TextDecoration.underline,
-                        textUnderLineColor: const Color.fromRGBO(239, 108, 77, 1),
+                        textUnderLineColor:
+                            const Color.fromRGBO(239, 108, 77, 1),
                         textSize: 16,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const blog();
+                              },
+                            ),
+                          );
+                        },
                         backgroundColor: null,
                       ),
                     ),
@@ -273,53 +295,10 @@ class _homeState extends State<home> {
                     }),
                 items: myitems,
               ),
-
-              // SizedBox(
-              //   height: context.screenHeight * .3,
-              //   child: Column(children: [
-              //     Expanded(
-              //       child: CarouselSlider(
-              //         items: jobSlider,
-              //         carouselController: _controller,
-              //         options: CarouselOptions(
-              //             autoPlay: false,
-              //             enlargeCenterPage: true,
-              //             aspectRatio: 2,
-              //             onPageChanged: (index, reason) {
-              //               setState(() {
-              //                 _current = index;
-              //               });
-              //             }),
-              //       ),
-              //     ),
-              //     Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: jobSlider.asMap().entries.map((entry) {
-              //         return GestureDetector(
-              //           onTap: () => _controller.animateToPage(entry.key),
-              //           child: Container(
-              //             width: 8,
-              //             height: 8,
-              //             margin:
-              //             const EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
-              //             decoration: BoxDecoration(
-              //               shape: BoxShape.circle,
-              //               color: (Theme.of(context).brightness == Brightness.dark
-              //                   ? Colors.white
-              //                   : Colors.black)
-              //                   .withOpacity(_current == entry.key ? 0.9 : 0.4),
-              //             ),
-              //           ),
-              //         );
-              //       }).toList(),
-              //     ),
-              //   ]),
-              // );
-
-
             ]),
           ),
-        ),        screen2(),
+        ),
+        screen2(),
         screen3(),
         screen4(),
         screen5(),
@@ -438,8 +417,6 @@ class screen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text('screen5'),),
-    );
+    return Scaffold(body: caledar());
   }
 }
